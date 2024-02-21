@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.kotcrab.vis.ui.widget.tabbedpane.Tab;
 
 public class uiTest extends ApplicationAdapter {
 	private Skin skin;
@@ -33,8 +34,11 @@ public class uiTest extends ApplicationAdapter {
 		ProgressBar progressBar;
 		TextButton textButton;
 
+		Table table = new Table();
+		root.add(table).expand().left().bottom();
+
         progressBar = new ProgressBar(0, 100, 1, false, skin);
-        root.add(progressBar);
+        table.add(progressBar);
 
 
 	}
