@@ -22,7 +22,6 @@ public class gameHud implements Screen, ApplicationListener {
 	private TextButton button2;
 
 	public void create () {
-		Vars.gameSkin = new Skin(Gdx.files.internal("metalui/metal-ui.json"));
 		stage = new Stage(new ScreenViewport());
 		Gdx.input.setInputProcessor(stage);
 
