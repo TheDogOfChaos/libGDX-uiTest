@@ -1,15 +1,13 @@
 package io.thedogofchaos.uitest;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import io.thedogofchaos.uitest.screens.mainMenu;
+import io.thedogofchaos.uitest.screens.MainMenu;
 
-public class uiTest extends Game {
+public class UiTest extends Game {
 
     @Override
     public void create() {
-        this.setScreen(new mainMenu(this));
+        this.setScreen(new MainMenu(this));
     }
 
     @Override

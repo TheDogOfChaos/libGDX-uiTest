@@ -1,27 +1,31 @@
 package io.thedogofchaos.uitest.screens;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.thedogofchaos.uitest.Vars;
-import io.thedogofchaos.uitest.uiTest;
+import io.thedogofchaos.uitest.UiTest;
 
-public class mainMenu implements Screen {
+public class MainMenu implements Screen {
 
     private final Stage stage;
-
+    private Game game;
     private final TextButton startButton;
     private final TextButton optionsButton;
     private final TextButton exitButton;
 
-    public mainMenu(uiTest uiTest) {
+    public MainMenu(UiTest uiTest) {
         stage = new Stage(new ScreenViewport());
 
         Table root = new Table();
@@ -43,6 +47,13 @@ public class mainMenu implements Screen {
         root.row();
         exitButton = new TextButton("Exit", Vars.gameSkin);
         root.add(exitButton).space(25).width(50).left();
+
+        startButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                game.setScreen(new World(game));
+            }
+        });
 
     }
 
