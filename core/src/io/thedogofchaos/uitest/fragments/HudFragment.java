@@ -11,13 +11,10 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.thedogofchaos.uitest.Vars;
 
 public class HudFragment extends Table {
-	private Stage stage;
-	private ProgressBar healthBar;
-	private TextButton button1;
-	private TextButton button2;
+    private final ProgressBar healthBar;
 
-	public HudFragment() {
-		stage = new Stage(new ScreenViewport());
+    public HudFragment() {
+        Stage stage = new Stage(new ScreenViewport());
 		Gdx.input.setInputProcessor(stage);
 
 		Table root = new Table();
@@ -27,9 +24,9 @@ public class HudFragment extends Table {
 
 		Table table = new Table();
 		root.add(table).expand().left().bottom();
-		button1 = new TextButton("Heal", Vars.gameSkin);
+        TextButton button1 = new TextButton("Heal", Vars.gameSkin);
 		table.add(button1).width(75);
-		button2 = new TextButton("Hurt", Vars.gameSkin);
+        TextButton button2 = new TextButton("Hurt", Vars.gameSkin);
 		table.add(button2).width(75);
 		table.row();
 		healthBar = new ProgressBar(0, 100, 1, false, Vars.gameSkin);

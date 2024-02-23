@@ -16,17 +16,21 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.thedogofchaos.uitest.Vars;
 import io.thedogofchaos.uitest.UiTest;
+import io.thedogofchaos.uitest.fragments.HudFragment;
+import io.thedogofchaos.uitest.fragments.OptionsFragment;
+
+import javax.swing.text.html.Option;
 
 public class MainMenu implements Screen {
 
     private final Stage stage;
     private Game game;
-    private final TextButton startButton;
-    private final TextButton optionsButton;
-    private final TextButton exitButton;
 
     public MainMenu(UiTest uiTest) {
         stage = new Stage(new ScreenViewport());
+        final OptionsFragment optionsFragment = new OptionsFragment();
+        stage.addActor(optionsFragment);
+        optionsFragment.setVisible(false);
 
         Table root = new Table();
         root.setFillParent(true);
@@ -39,22 +43,28 @@ public class MainMenu implements Screen {
         root.add(titleImage).expand().left().top();
         root.row();
 
-        startButton = new TextButton("Play", Vars.gameSkin);
+        TextButton startButton = new TextButton("Play", Vars.gameSkin);
         root.add(startButton).space(25).width(150).left();
         root.row();
-        optionsButton = new TextButton("Options", Vars.gameSkin);
+        TextButton optionsButton = new TextButton("Options", Vars.gameSkin);
         root.add(optionsButton).space(25).width(100).left();
         root.row();
-        exitButton = new TextButton("Exit", Vars.gameSkin);
+        TextButton exitButton = new TextButton("Exit", Vars.gameSkin);
         root.add(exitButton).space(25).width(50).left();
 
         startButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
+                // TODO: FIX, RETURNS NULL
                 game.setScreen(new World(game));
             }
         });
-
+        optionsButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                optionsFragment.setVisible(!optionsFragment.isVisible());
+            }
+        });
     }
 
     @Override
