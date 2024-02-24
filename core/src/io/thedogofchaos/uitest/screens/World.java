@@ -11,7 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import io.thedogofchaos.uitest.InputHandler;
 import io.thedogofchaos.uitest.UiTest;
 import io.thedogofchaos.uitest.Vars;
 import io.thedogofchaos.uitest.fragments.*;
@@ -46,7 +45,7 @@ public class World extends ScreenAdapter {
         InputMultiplexer inputMultiplexer = new InputMultiplexer();
         inputMultiplexer.addProcessor(new InputAdapter() {
             public boolean keyDown(int keycode) {
-                if (keycode == Input.Keys.J) {
+                if (keycode == 111) {
                     System.out.println("Esc pressed!");
                     // TODO: FIX THIS, DOESN'T DETECT ESCAPE PRESS
                     if (Vars.currentStage == worldStage) {
