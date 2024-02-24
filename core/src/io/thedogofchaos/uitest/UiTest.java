@@ -7,7 +7,7 @@ public class UiTest extends Game {
 
     @Override
     public void create() {
-        this.setScreen(new MainMenu(this));
+        setScreen(new MainMenu(this));
     }
 
     @Override

@@ -3,26 +3,28 @@ package io.thedogofchaos.uitest.screens;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import io.thedogofchaos.uitest.UiTest;
 import io.thedogofchaos.uitest.fragments.HudFragment;
 
 //
-public class World implements Screen {
+public class World extends ScreenAdapter {
 
-    private Stage stage;
-    private Game game;
-
-    public World(Game game){
-        stage = new Stage(new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
+    Stage stage;
+    UiTest game;
+    HudFragment hud;
+    public World(UiTest game){
+        System.out.println("World loaded!");
+        this.game = game;
         HudFragment hud = new HudFragment();
-        stage.addActor(hud);
-        Gdx.input.setInputProcessor(stage);
     }
     @Override
     public void show() {
-
+        stage = new Stage(new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
+        Gdx.input.setInputProcessor(stage);
     }
 
     @Override
@@ -30,30 +32,7 @@ public class World implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         stage.act(delta);
         stage.draw();
-    }
-
-    @Override
-    public void resize(int width, int height) {
-
-    }
-
-    @Override
-    public void pause() {
-
-    }
-
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void hide() {
-
-    }
-
-    @Override
-    public void dispose() {
-
+        hud.act(delta);
+        hud.getStage().draw();
     }
 }

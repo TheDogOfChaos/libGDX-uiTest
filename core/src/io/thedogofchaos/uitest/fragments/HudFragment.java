@@ -1,20 +1,27 @@
 package io.thedogofchaos.uitest.fragments;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
+import com.kotcrab.vis.ui.util.value.VisWidgetValue;
 import io.thedogofchaos.uitest.Vars;
 
 public class HudFragment extends Table {
     private final ProgressBar healthBar;
+	private final Viewport viewport;
+    private Stage stage;
 
     public HudFragment() {
-        Stage stage = new Stage(new ScreenViewport());
+        viewport = new FitViewport(1280, 720, new OrthographicCamera());
+        Stage stage = new Stage(viewport);
 		Gdx.input.setInputProcessor(stage);
 
 		Table root = new Table();
@@ -44,6 +51,8 @@ public class HudFragment extends Table {
 				updateHP(-5);
 			}
 		});
+
+		stage.addActor(table);
 	}
 
 	private void updateHP(Integer newVal){

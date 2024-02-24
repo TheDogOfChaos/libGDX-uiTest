@@ -11,22 +11,19 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.thedogofchaos.uitest.Vars;
 import io.thedogofchaos.uitest.UiTest;
-import io.thedogofchaos.uitest.fragments.HudFragment;
 import io.thedogofchaos.uitest.fragments.OptionsFragment;
-
-import javax.swing.text.html.Option;
 
 public class MainMenu implements Screen {
 
-    private final Stage stage;
-    private Game game;
+    Stage stage;
+    final UiTest game;
 
-    public MainMenu(UiTest uiTest) {
+    public MainMenu(final UiTest game) {
+        this.game = game;
         stage = new Stage(new ScreenViewport());
         final OptionsFragment optionsFragment = new OptionsFragment();
         stage.addActor(optionsFragment);
@@ -51,7 +48,6 @@ public class MainMenu implements Screen {
         root.row();
         TextButton exitButton = new TextButton("Exit", Vars.gameSkin);
         root.add(exitButton).space(25).width(50).left();
-
         startButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
@@ -63,6 +59,13 @@ public class MainMenu implements Screen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 optionsFragment.setVisible(!optionsFragment.isVisible());
+                System.out.println(optionsFragment.isVisible());
+            }
+        });
+        exitButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                Gdx.app.exit();
             }
         });
     }
