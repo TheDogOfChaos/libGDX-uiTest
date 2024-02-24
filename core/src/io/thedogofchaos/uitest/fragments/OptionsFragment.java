@@ -1,48 +1,96 @@
 package io.thedogofchaos.uitest.fragments;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Slider;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.thedogofchaos.uitest.Vars;
+import io.thedogofchaos.uitest.screens.MainMenu;
 
 public class OptionsFragment extends Table {
-    private Stage stage;
-    private Table table;
+    private final Stage optionsStage;
+    private Slider masterVolume;
+    private Slider mouseSensitivity;
+    private Actor background;
     public OptionsFragment (){
-        stage = new Stage();
-        table = new Table();
-        Gdx.input.setInputProcessor(stage);
+        background = background();
+        optionsStage = new Stage();
+        Table stageTable = new Table();
+        stageTable.setFillParent(true);
+        stageTable.pad(25).setDebug(false);
 
-        table.setFillParent(true);
-        table.pad(25).setDebug(true);
+        Table optionsTable = new Table();
+        stageTable.add(optionsTable).expand().top().left();
 
-        Slider masterVolume = new Slider(0,100,1,false, Vars.gameSkin);
-        table.add(masterVolume).expand().top().left();
-        Slider mouseSensitivity = new Slider(0,100,1,false, Vars.gameSkin);
-        table.add(mouseSensitivity).expand().top().left();
+        Label labelVolume = new Label("Master Volume:", Vars.gameSkin);
+        optionsTable.add(labelVolume);
+        masterVolume = new Slider(0,100,1,false, Vars.gameSkin);
+        optionsTable.add(masterVolume);
+        optionsTable.row();
+        Label labelMouseSensitivity = new Label("Mouse Sensitivity:", Vars.gameSkin);
+        optionsTable.add(labelMouseSensitivity);
+        mouseSensitivity = new Slider(0,100,1,false, Vars.gameSkin);
+        optionsTable.add(mouseSensitivity);
+        TextButton backButton = new TextButton("Back", Vars.gameSkin);
+        stageTable.add(backButton).expand().bottom().left();
 
-        stage.addActor(table);
+        backButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                showOptionsMenu(false);
+                Gdx.input.setInputProcessor(MainMenu.mainMenuStage);
+            }
+        });
+
+        optionsStage.addActor(stageTable);
     }
 
+
+    // TODO: maybe make this not boilerplate-y in future
+    private Actor background() {
+        Actor background = new Actor() {
+            final Texture whitePixel = new Texture(Gdx.files.internal("whitepixel.png"));
+            @Override
+            public void draw(Batch batch, float parentAlpha) {
+                // this draws a semi-transparent black rectangle covering the entire screen
+                batch.setColor(0, 0, 0, 0.75f); // Semi-transparent black color
+                batch.draw(whitePixel, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+                batch.setColor(Color.WHITE); // Reset color
+            }
+        };
+        background.setTouchable(Touchable.disabled);
+        return background;
+    }
+
+    public void showOptionsMenu(boolean show) {
+        if (show) {
+            getStage().addActor(background);
+        } else {
+            background.remove();
+        }
+        setVisible(show);
+    }
     public void update(float delta) {
 
     }
 
-    // Method to draw HUD elements
     public void draw() {
-        stage.act(); // Update the stage
-        stage.draw(); // Draw the stage
+        Gdx.input.setInputProcessor(optionsStage);
+        optionsStage.act();
+        optionsStage.draw();
     }
 
-    // Method to resize HUD elements
     public void resize(int width, int height) {
-        stage.getViewport().update(width, height, true);
+        optionsStage.getViewport().update(width, height, true);
     }
 
-    // Dispose method to release resources when no longer needed
     public void dispose() {
-        stage.dispose();
+        optionsStage.dispose();
     }
 }
