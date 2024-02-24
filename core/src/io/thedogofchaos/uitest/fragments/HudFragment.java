@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import io.thedogofchaos.uitest.Sounds;
 import io.thedogofchaos.uitest.Vars;
 
 public class HudFragment extends Table{
@@ -33,12 +34,14 @@ public class HudFragment extends Table{
 		heal.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
+				Sounds.click.play(1f);
 				healthBar.setValue(healthBar.getValue()+5);
 			}
 		});
 		hurt.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
+				Sounds.click.play(1f);
 				healthBar.setValue(healthBar.getValue()-5);
 			}
 		});

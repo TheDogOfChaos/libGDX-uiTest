@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import io.thedogofchaos.uitest.Sounds;
 import io.thedogofchaos.uitest.Vars;
 import io.thedogofchaos.uitest.screens.MainMenu;
 
@@ -43,6 +44,7 @@ public class OptionsFragment extends Table {
         backButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
+                Sounds.click.play(1f);
                 showOptionsMenu(false);
                 Gdx.input.setInputProcessor(MainMenu.mainMenuStage);
             }
