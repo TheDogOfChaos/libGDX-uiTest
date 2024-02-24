@@ -13,7 +13,7 @@ import io.thedogofchaos.uitest.UiTest;
 import io.thedogofchaos.uitest.fragments.HudFragment;
 
 public class World extends ScreenAdapter {
-    private Stage stage;
+    public Stage stage;
     private Game game;
     private SpriteBatch spriteBatch;
     private Viewport viewport;
@@ -22,7 +22,7 @@ public class World extends ScreenAdapter {
     public World(UiTest game){
         System.out.println("World loaded!");
         this.game = game;
-        hud = new HudFragment();
+        hud = new HudFragment(null);
         spriteBatch = new SpriteBatch();
     }
 
@@ -40,7 +40,8 @@ public class World extends ScreenAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         stage.act(delta);
         stage.draw();
-        hud.draw(spriteBatch, delta);
+        game.spriteBatch.setProjectionMatrix(hud.stage.getCamera().combined);
+        hud.stage.draw();
     }
 
     @Override

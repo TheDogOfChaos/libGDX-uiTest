@@ -3,27 +3,28 @@ package io.thedogofchaos.uitest.fragments;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kotcrab.vis.ui.util.value.VisWidgetValue;
 import io.thedogofchaos.uitest.Vars;
 
-public class HudFragment extends Table {
+public class HudFragment extends Table implements Disposable {
 	private final ProgressBar healthBar;
-	private final Viewport viewport;
-	private Stage stage;
+	private Viewport viewport;
+	public Stage stage;
 
-	public HudFragment() {
+	public HudFragment(SpriteBatch spriteBatch) {
 		viewport = new FitViewport(1280, 720, new OrthographicCamera());
-		stage = new Stage(viewport); // Assign the stage to the class-level variable
-		Gdx.input.setInputProcessor(stage);
+		stage = new Stage(viewport, spriteBatch); // Assign the stage to the class-level variable
 
 		Table root = new Table();
 		root.setFillParent(true);
@@ -68,5 +69,10 @@ public class HudFragment extends Table {
 	// Getter method for accessing the viewport of the internal stage
 	public Viewport getViewport() {
 		return stage.getViewport();
+	}
+
+	@Override
+	public void dispose() {
+		stage.dispose();
 	}
 }
