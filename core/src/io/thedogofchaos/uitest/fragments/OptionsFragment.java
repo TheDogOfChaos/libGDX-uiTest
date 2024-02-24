@@ -11,12 +11,12 @@ public class OptionsFragment extends Table {
     private Stage stage;
     private Table table;
     public OptionsFragment (){
-        Stage stage = new Stage();
+        stage = new Stage();
+        table = new Table();
         Gdx.input.setInputProcessor(stage);
 
-        Table table = new Table();
         table.setFillParent(true);
-        table.pad(25);
+        table.pad(25).setDebug(true);
 
         Slider masterVolume = new Slider(0,100,1,false, Vars.gameSkin);
         table.add(masterVolume).expand().top().left();

@@ -21,36 +21,39 @@ public class MainMenu implements Screen {
 
     public Stage stage;
     final UiTest game;
-
     private OptionsFragment optionsFragment;
+    private Table mainMenu;
 
     public MainMenu(final UiTest game) {
         this.game = game;
         stage = new Stage(new ScreenViewport());
+        mainMenu = new Table();
+        mainMenu.setFillParent(true);
+        mainMenu.pad(25).setDebug(true);
+
         optionsFragment = new OptionsFragment();
-        stage.addActor(optionsFragment);
         optionsFragment.setVisible(false);
 
-        Table root = new Table();
-        root.setFillParent(true);
-        stage.addActor(root);
-
-        root.pad(25).setDebug(false);
-
+        // this adds the title image
         TextureRegionDrawable drawable = new TextureRegionDrawable(new Texture(Gdx.files.internal("UNTITLED-FACTORY-GAME.png")));
         Image titleImage = new Image(drawable);
-        root.add(titleImage).expand().left().top();
-        root.row();
+        mainMenu.add(titleImage).expand().left().top();
+        mainMenu.row();
 
+        // this adds the actual buttons of the main menu
         TextButton startButton = new TextButton("Play", Vars.gameSkin);
-        root.add(startButton).space(25).width(150).left();
-        root.row();
+        mainMenu.add(startButton).space(25).width(150).left();
+        mainMenu.row();
         TextButton optionsButton = new TextButton("Options", Vars.gameSkin);
-        root.add(optionsButton).space(25).width(100).left();
-        root.row();
+        mainMenu.add(optionsButton).space(25).width(100).left();
+        mainMenu.row();
         TextButton exitButton = new TextButton("Exit", Vars.gameSkin);
-        root.add(exitButton).space(25).width(50).left();
-        startButton.addListener(new ChangeListener() { // TODO: make this work
+        mainMenu.add(exitButton).space(25).width(50).left();
+
+        stage.addActor(optionsFragment);
+        stage.addActor(mainMenu);
+        // this checks when buttons are pressed
+        startButton.addListener(new ChangeListener() { // works very fine
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 game.setScreen(new World(game));

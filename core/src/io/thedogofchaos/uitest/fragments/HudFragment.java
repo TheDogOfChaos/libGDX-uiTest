@@ -13,10 +13,11 @@ public class HudFragment extends Table{
 		stage = new Stage();
 		table = new Table();
 
-		ProgressBar healthBar = new ProgressBar(0, 100, 1, false, Vars.gameSkin);
-		table.add(healthBar);
-
 		table.setFillParent(true);
+		table.pad(25).setDebug(true);
+
+		ProgressBar healthBar = new ProgressBar(0, 100, 1, false, Vars.gameSkin);
+		table.add(healthBar).expand().bottom().left();
 
 		stage.addActor(table);
 	}
