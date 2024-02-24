@@ -17,6 +17,7 @@ public class InputHandler implements InputProcessor {
     @Override
     public boolean keyDown(int keycode) {
         if (keycode == Input.Keys.ESCAPE) {
+            // TODO: FIX THIS, DOESN'T DETECT ESCAPE PRESS
             if (stage.equals(worldStage)) {
                 pauseMenu.showPauseMenu(true);
                 return true;
