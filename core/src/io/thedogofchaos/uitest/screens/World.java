@@ -44,10 +44,10 @@ public class World extends ScreenAdapter {
     public void show() {
         InputMultiplexer inputMultiplexer = new InputMultiplexer();
         inputMultiplexer.addProcessor(new InputAdapter() {
+            // TODO: FIX, DOESN'T DETECT KEY-PRESSES FOR SOME REASON
             public boolean keyDown(int keycode) {
                 if (keycode == 111) {
                     System.out.println("Esc pressed!");
-                    // TODO: FIX THIS, DOESN'T DETECT ESCAPE PRESS
                     if (Vars.currentStage == worldStage) {
                         pauseMenu.showPauseMenu(true);
                         return true;
