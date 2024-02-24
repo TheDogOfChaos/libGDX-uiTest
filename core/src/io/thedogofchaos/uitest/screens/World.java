@@ -43,10 +43,25 @@ public class World extends ScreenAdapter {
 
     @Override
     public void show() {
-        InputHandler inputHandler = new InputHandler();
         InputMultiplexer inputMultiplexer = new InputMultiplexer();
+        inputMultiplexer.addProcessor(new InputAdapter() {
+            public boolean keyDown(int keycode) {
+                if (keycode == Input.Keys.J) {
+                    System.out.println("Esc pressed!");
+                    // TODO: FIX THIS, DOESN'T DETECT ESCAPE PRESS
+                    if (Vars.currentStage == worldStage) {
+                        pauseMenu.showPauseMenu(true);
+                        return true;
+                    } else if (Vars.currentStage == PauseFragment.pauseStage) {
+                        pauseMenu.showPauseMenu(false);
+                        return true;
+                    }
+
+                }
+                return false;
+            }
+        });
         inputMultiplexer.addProcessor(worldStage);
-        inputMultiplexer.addProcessor(inputHandler);
         Gdx.input.setInputProcessor(inputMultiplexer);
         hud.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     }

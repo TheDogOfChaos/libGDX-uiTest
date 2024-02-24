@@ -14,7 +14,7 @@ import io.thedogofchaos.uitest.Vars;
 
 public class PauseFragment extends Table {
     private OptionsFragment optionsMenu;
-    private Stage pauseStage;
+    public static Stage pauseStage;
     private Slider masterVolume;
     private Slider mouseSensitivity;
     private Actor background;
