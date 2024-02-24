@@ -1,6 +1,5 @@
 package io.thedogofchaos.uitest.screens;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -22,7 +21,7 @@ public class MainMenu implements Screen {
 
     public static Stage mainMenuStage;
     final UiTest game;
-    private final OptionsFragment optionsMenu;
+    private OptionsFragment optionsMenu;
     private final Table mainMenu;
 
     public MainMenu(final UiTest game) {
@@ -63,6 +62,7 @@ public class MainMenu implements Screen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 Sounds.click.play(1f);
+                Vars.prevStage = mainMenuStage;
                 optionsMenu.showOptionsMenu(true);
             }
         });

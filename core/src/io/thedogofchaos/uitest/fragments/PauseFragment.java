@@ -12,44 +12,44 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import io.thedogofchaos.uitest.Sounds;
 import io.thedogofchaos.uitest.Vars;
 
-public class OptionsFragment extends Table {
-    public static Stage optionsStage;
+public class PauseFragment extends Table {
+    private OptionsFragment optionsMenu;
+    private Stage pauseStage;
     private Slider masterVolume;
     private Slider mouseSensitivity;
     private Actor background;
-    public OptionsFragment (){
-        Vars.currentStage = optionsStage;
+    public PauseFragment(){
+        Vars.currentStage = pauseStage;
         background = background();
-        optionsStage = new Stage();
+        pauseStage = new Stage();
         Table stageTable = new Table();
         stageTable.setFillParent(true);
         stageTable.pad(25).setDebug(false);
 
-        Table optionsTable = new Table();
-        stageTable.add(optionsTable).expand().top().left();
+        TextButton optionsButton = new TextButton("Options", Vars.gameSkin);
+        stageTable.add(optionsButton);
+        TextButton closeButton = new TextButton("Back", Vars.gameSkin);
+        stageTable.add(closeButton);
 
-        Label labelVolume = new Label("Master Volume:", Vars.gameSkin);
-        optionsTable.add(labelVolume);
-        masterVolume = new Slider(0,100,1,false, Vars.gameSkin);
-        optionsTable.add(masterVolume);
-        optionsTable.row();
-        Label labelMouseSensitivity = new Label("Mouse Sensitivity:", Vars.gameSkin);
-        optionsTable.add(labelMouseSensitivity);
-        mouseSensitivity = new Slider(0,100,1,false, Vars.gameSkin);
-        optionsTable.add(mouseSensitivity);
-        TextButton backButton = new TextButton("Back", Vars.gameSkin);
-        stageTable.add(backButton).expand().bottom().left();
-
-        backButton.addListener(new ChangeListener() {
+        optionsButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 Sounds.click.play(1f);
-                showOptionsMenu(false);
+                Vars.prevStage = pauseStage;
+                optionsMenu.showOptionsMenu(true);
+                Gdx.input.setInputProcessor(OptionsFragment.optionsStage);
+            }
+        });
+        closeButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                Sounds.click.play(1f);
+                showPauseMenu(false);
                 Gdx.input.setInputProcessor(Vars.prevStage);
             }
         });
 
-        optionsStage.addActor(stageTable);
+        pauseStage.addActor(stageTable);
     }
 
 
@@ -69,7 +69,7 @@ public class OptionsFragment extends Table {
         return background;
     }
 
-    public void showOptionsMenu(boolean show) {
+    public void showPauseMenu(boolean show) {
         if (show) {
             getStage().addActor(background);
         } else {
@@ -82,16 +82,16 @@ public class OptionsFragment extends Table {
     }
 
     public void draw() {
-        Gdx.input.setInputProcessor(optionsStage);
-        optionsStage.act();
-        optionsStage.draw();
+        Gdx.input.setInputProcessor(pauseStage);
+        pauseStage.act();
+        pauseStage.draw();
     }
 
     public void resize(int width, int height) {
-        optionsStage.getViewport().update(width, height, true);
+        pauseStage.getViewport().update(width, height, true);
     }
 
     public void dispose() {
-        optionsStage.dispose();
+        pauseStage.dispose();
     }
 }
