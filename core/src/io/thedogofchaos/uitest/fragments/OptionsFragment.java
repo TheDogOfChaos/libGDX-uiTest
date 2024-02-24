@@ -8,19 +8,41 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.thedogofchaos.uitest.Vars;
 
 public class OptionsFragment extends Table {
-    // Overlay for the options menu
+    private Stage stage;
+    private Table table;
     public OptionsFragment (){
-        Stage stage = new Stage(new ScreenViewport());
+        Stage stage = new Stage();
         Gdx.input.setInputProcessor(stage);
 
-        Table root = new Table();
-        root.setFillParent(true);
-        stage.addActor(root);
-        root.pad(25);
+        Table table = new Table();
+        table.setFillParent(true);
+        table.pad(25);
 
         Slider masterVolume = new Slider(0,100,1,false, Vars.gameSkin);
-        root.add(masterVolume).expand().top().left();
+        table.add(masterVolume).expand().top().left();
         Slider mouseSensitivity = new Slider(0,100,1,false, Vars.gameSkin);
-        root.add(mouseSensitivity).expand().top().left();
+        table.add(mouseSensitivity).expand().top().left();
+
+        stage.addActor(table);
+    }
+
+    public void update(float delta) {
+
+    }
+
+    // Method to draw HUD elements
+    public void draw() {
+        stage.act(); // Update the stage
+        stage.draw(); // Draw the stage
+    }
+
+    // Method to resize HUD elements
+    public void resize(int width, int height) {
+        stage.getViewport().update(width, height, true);
+    }
+
+    // Dispose method to release resources when no longer needed
+    public void dispose() {
+        stage.dispose();
     }
 }

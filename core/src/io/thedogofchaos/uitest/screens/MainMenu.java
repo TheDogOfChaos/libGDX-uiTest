@@ -19,13 +19,15 @@ import io.thedogofchaos.uitest.fragments.OptionsFragment;
 
 public class MainMenu implements Screen {
 
-    Stage stage;
+    public Stage stage;
     final UiTest game;
+
+    private OptionsFragment optionsFragment;
 
     public MainMenu(final UiTest game) {
         this.game = game;
         stage = new Stage(new ScreenViewport());
-        final OptionsFragment optionsFragment = new OptionsFragment();
+        optionsFragment = new OptionsFragment();
         stage.addActor(optionsFragment);
         optionsFragment.setVisible(false);
 
@@ -48,20 +50,20 @@ public class MainMenu implements Screen {
         root.row();
         TextButton exitButton = new TextButton("Exit", Vars.gameSkin);
         root.add(exitButton).space(25).width(50).left();
-        startButton.addListener(new ChangeListener() {
+        startButton.addListener(new ChangeListener() { // TODO: make this work
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 game.setScreen(new World(game));
             }
         });
-        optionsButton.addListener(new ChangeListener() {
+        optionsButton.addListener(new ChangeListener() { // TODO: make this render properly
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 optionsFragment.setVisible(!optionsFragment.isVisible());
                 System.out.println(optionsFragment.isVisible());
             }
         });
-        exitButton.addListener(new ChangeListener() {
+        exitButton.addListener(new ChangeListener() { // this works fine
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 Gdx.app.exit();
