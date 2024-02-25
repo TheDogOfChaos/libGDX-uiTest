@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.thedogofchaos.uitest.Sounds;
 import io.thedogofchaos.uitest.Vars;
@@ -31,24 +32,24 @@ public class MainMenu implements Screen {
         mainMenu.setFillParent(true);
         mainMenu.pad(25).setDebug(false);
 
-        optionsMenu = new OptionsFragment();
+        optionsMenu = new OptionsFragment(mainMenuStage);
         optionsMenu.showOptionsMenu(false);
 
         // this adds the title image
         TextureRegionDrawable drawable = new TextureRegionDrawable(new Texture(Gdx.files.internal("UNTITLED-FACTORY-GAME.png")));
         Image titleImage = new Image(drawable);
-        mainMenu.add(titleImage).expand().left().top();
-        mainMenu.row();
+            mainMenu.add(titleImage).expand().left().top();
+            mainMenu.row();
 
-        // this adds the actual buttons of the main menu
-        TextButton startButton = new TextButton("Play", Vars.gameSkin);
-        mainMenu.add(startButton).space(25).width(150).left();
-        mainMenu.row();
-        TextButton optionsButton = new TextButton("Options", Vars.gameSkin);
-        mainMenu.add(optionsButton).space(25).width(100).left();
-        mainMenu.row();
-        TextButton exitButton = new TextButton("Exit", Vars.gameSkin);
-        mainMenu.add(exitButton).space(25).width(50).left();
+            // this adds the actual buttons of the main menu
+            TextButton startButton = new TextButton("Play", Vars.gameSkin);
+            mainMenu.add(startButton).space(25).width(150).left();
+            mainMenu.row();
+            TextButton optionsButton = new TextButton("Options", Vars.gameSkin);
+            mainMenu.add(optionsButton).space(25).width(100).left();
+            mainMenu.row();
+            TextButton exitButton = new TextButton("Exit", Vars.gameSkin);
+            mainMenu.add(exitButton).space(25).width(50).left();
 
         // this checks when buttons are pressed
         startButton.addListener(new ChangeListener() { // works very fine
@@ -62,7 +63,6 @@ public class MainMenu implements Screen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 Sounds.click.play(1f);
-                Vars.prevStage = mainMenuStage;
                 optionsMenu.showOptionsMenu(true);
             }
         });

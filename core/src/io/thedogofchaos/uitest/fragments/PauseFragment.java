@@ -9,22 +9,25 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.thedogofchaos.uitest.Sounds;
 import io.thedogofchaos.uitest.Vars;
+import io.thedogofchaos.uitest.screens.World;
+
+import javax.swing.text.html.Option;
 
 public class PauseFragment extends Table {
     private OptionsFragment optionsMenu;
     public static Stage pauseStage;
-    private Slider masterVolume;
-    private Slider mouseSensitivity;
     private Actor background;
     public PauseFragment(){
-        Vars.currentStage = pauseStage;
         background = background();
         pauseStage = new Stage();
+        optionsMenu = new OptionsFragment(pauseStage);
         Table stageTable = new Table();
         stageTable.setFillParent(true);
         stageTable.pad(25).setDebug(false);
+
 
         TextButton optionsButton = new TextButton("Options", Vars.gameSkin);
         stageTable.add(optionsButton);
@@ -35,7 +38,6 @@ public class PauseFragment extends Table {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 Sounds.click.play(1f);
-                Vars.prevStage = pauseStage;
                 optionsMenu.showOptionsMenu(true);
                 Gdx.input.setInputProcessor(OptionsFragment.optionsStage);
             }
@@ -45,7 +47,7 @@ public class PauseFragment extends Table {
             public void changed(ChangeEvent event, Actor actor) {
                 Sounds.click.play(1f);
                 showPauseMenu(false);
-                Gdx.input.setInputProcessor(Vars.prevStage);
+                Gdx.input.setInputProcessor(World.inputMultiplexer);
             }
         });
 
@@ -69,8 +71,10 @@ public class PauseFragment extends Table {
         return background;
     }
 
+
     public void showPauseMenu(boolean show) {
         if (show) {
+            System.out.println(getStage());
             getStage().addActor(background);
         } else {
             background.remove();

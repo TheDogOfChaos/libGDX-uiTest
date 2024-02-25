@@ -1,6 +1,7 @@
 package io.thedogofchaos.uitest.fragments;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -17,13 +18,12 @@ public class OptionsFragment extends Table {
     private Slider masterVolume;
     private Slider mouseSensitivity;
     private Actor background;
-    public OptionsFragment (){
-        Vars.currentStage = optionsStage;
+    public OptionsFragment (final InputProcessor prevStage){
         background = background();
         optionsStage = new Stage();
         Table stageTable = new Table();
         stageTable.setFillParent(true);
-        stageTable.pad(25).setDebug(false);
+        stageTable.pad(25).setDebug(true);
 
         Table optionsTable = new Table();
         stageTable.add(optionsTable).expand().top().left();
@@ -45,7 +45,7 @@ public class OptionsFragment extends Table {
             public void changed(ChangeEvent event, Actor actor) {
                 Sounds.click.play(1f);
                 showOptionsMenu(false);
-                Gdx.input.setInputProcessor(Vars.prevStage);
+                Gdx.input.setInputProcessor(prevStage);
             }
         });
 

@@ -10,16 +10,24 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import io.thedogofchaos.uitest.Sounds;
 import io.thedogofchaos.uitest.Vars;
 
+import javax.swing.*;
+
 public class HudFragment extends Table{
-	private final Stage stage;
+	public static Stage hudStage;
+	public static TextButton pauseButton;
 	private final Table stageTable;
 	private final ProgressBar healthBar;
+	private PauseFragment pauseMenu;
 	public HudFragment() {
-		stage = new Stage();
+		hudStage = new Stage();
 		stageTable = new Table();
 		stageTable.setFillParent(true);
 		stageTable.pad(25).setDebug(false);
 
+		pauseMenu = new PauseFragment();
+		pauseMenu.showPauseMenu(false);
+		TextButton pauseButton = new TextButton("⏸", Vars.gameSkin);
+		stageTable.add(pauseButton).expand().top().left();
 		Table essentialStatsTable = new Table();
 		stageTable.add(essentialStatsTable).expand().bottom().left();
 
@@ -46,7 +54,7 @@ public class HudFragment extends Table{
 			}
 		});
 
-		stage.addActor(stageTable);
+		hudStage.addActor(stageTable);
 	}
 
 	public void update(float delta) {
@@ -55,18 +63,17 @@ public class HudFragment extends Table{
 
 	// Method to draw HUD elements
 	public void draw() {
-		Gdx.input.setInputProcessor(stage);
-		stage.act(); // Update the stage
-		stage.draw(); // Draw the stage
+		hudStage.act(); // Update the stage
+		hudStage.draw(); // Draw the stage
 	}
 
 	// Method to resize HUD elements
 	public void resize(int width, int height) {
-		stage.getViewport().update(width, height, true);
+		hudStage.getViewport().update(width, height, true);
 	}
 
 	// Dispose method to release resources when no longer needed
 	public void dispose() {
-		stage.dispose();
+		hudStage.dispose();
 	}
 }
