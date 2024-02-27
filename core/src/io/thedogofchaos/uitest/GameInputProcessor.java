@@ -1,12 +1,7 @@
 package io.thedogofchaos.uitest;
 
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import io.thedogofchaos.uitest.fragments.PauseFragment;
-import io.thedogofchaos.uitest.screens.World;
-import org.w3c.dom.events.EventException;
-
-import java.util.Objects;
 
 public class GameInputProcessor implements InputProcessor {
 

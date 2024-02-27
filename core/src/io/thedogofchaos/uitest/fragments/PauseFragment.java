@@ -9,12 +9,9 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.thedogofchaos.uitest.Sounds;
 import io.thedogofchaos.uitest.Vars;
 import io.thedogofchaos.uitest.screens.World;
-
-import javax.swing.text.html.Option;
 
 public class PauseFragment extends Table {
     private OptionsFragment optionsMenu;
@@ -75,7 +72,7 @@ public class PauseFragment extends Table {
     public void showPauseMenu(boolean show) {
         if (show) {
             System.out.println(getStage());
-            getStage().addActor(background);
+             getStage().addActor(background);
         } else {
             background.remove();
         }

@@ -50,6 +50,7 @@ public class World extends ScreenAdapter {
             }
         });
         worldStage.addActor(temp);
+        worldStage.addActor(pauseMenu);
     }
 
     @Override
@@ -67,15 +68,18 @@ public class World extends ScreenAdapter {
         update(delta); // Update logic
         worldStage.act(delta); // Update the stage
         worldStage.draw(); // Draw the stage
-        hud.act(delta);
-        hud.draw();
         if (optionsMenu.isVisible()) {
             optionsMenu.act(delta);
             optionsMenu.draw();
         }
-        if (pauseMenu.isVisible()){
+        if (pauseMenu.isVisible()) {
+            hud.act(delta);
+            hud.draw();
             pauseMenu.act(delta);
             pauseMenu.draw();
+        } else if (!pauseMenu.isVisible()) {
+            hud.act(delta);
+            hud.draw();
         }
     }
 
