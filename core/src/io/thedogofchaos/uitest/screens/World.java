@@ -19,6 +19,8 @@ import io.thedogofchaos.uitest.UiTest;
 import io.thedogofchaos.uitest.Vars;
 import io.thedogofchaos.uitest.fragments.*;
 
+import static io.thedogofchaos.uitest.fragments.PauseFragment.pauseStage;
+
 public class World extends ScreenAdapter {
     private final OptionsFragment optionsMenu;
     private final PauseFragment pauseMenu;
@@ -54,6 +56,7 @@ public class World extends ScreenAdapter {
 
         worldStage.addActor(temp);
         worldStage.addActor(pauseMenu); // Fun fact: The oversight of not including this very line in my code absolutely BROKE me mentally for about 3 to 4 days. So yeah, don't forget about the stupidly simple stuff like this.
+        pauseStage.addActor(optionsMenu);
     }
 
     @Override
