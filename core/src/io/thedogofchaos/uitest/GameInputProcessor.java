@@ -1,5 +1,6 @@
 package io.thedogofchaos.uitest;
 
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import io.thedogofchaos.uitest.fragments.PauseFragment;
 
@@ -10,7 +11,7 @@ public class GameInputProcessor implements InputProcessor {
     @Override
     public boolean keyDown(int keycode) {
         System.out.println("Key pressed: " + keycode);
-        /* if (keycode == Input.Keys.ESCAPE) {
+        if (keycode == Input.Keys.ESCAPE) {
             System.out.println(Vars.currentStage);
             if (Vars.currentStage == "worldStage") {
                 pauseMenu.showPauseMenu(true);
@@ -26,7 +27,7 @@ public class GameInputProcessor implements InputProcessor {
                 System.out.println("Pause Menu did not render (Current stage: " + Vars.currentStage + ")");
             }
 
-        }*/
+        }
         return false;
     }
 
