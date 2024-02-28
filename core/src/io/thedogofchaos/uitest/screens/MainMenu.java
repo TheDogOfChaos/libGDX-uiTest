@@ -21,7 +21,7 @@ import io.thedogofchaos.uitest.fragments.OptionsFragment;
 public class MainMenu implements Screen {
 
     public static Stage mainMenuStage;
-    final UiTest game;
+    public static UiTest game;
     private OptionsFragment optionsMenu;
     private final Table mainMenu;
 
@@ -56,7 +56,7 @@ public class MainMenu implements Screen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 Sounds.click.play(1f);
-                game.setScreen(new World(game));
+                game.setScreen(new World());
             }
         });
         optionsButton.addListener(new ChangeListener() {
@@ -118,5 +118,6 @@ public class MainMenu implements Screen {
     @Override
     public void dispose() {
         mainMenuStage.dispose();
+        optionsMenu.dispose();
     }
 }

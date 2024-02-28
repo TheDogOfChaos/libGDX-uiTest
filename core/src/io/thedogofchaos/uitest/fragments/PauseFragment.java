@@ -1,6 +1,7 @@
 package io.thedogofchaos.uitest.fragments;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -9,9 +10,16 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.sun.tools.javac.Main;
+import io.thedogofchaos.uitest.screens.MainMenu;
 import io.thedogofchaos.uitest.Sounds;
+import io.thedogofchaos.uitest.UiTest;
 import io.thedogofchaos.uitest.Vars;
 import io.thedogofchaos.uitest.screens.World;
+import com.badlogic.gdx.Screen;
+import org.w3c.dom.Text;
+
+import static io.thedogofchaos.uitest.screens.MainMenu.mainMenuStage;
 
 public class PauseFragment extends Table {
     private OptionsFragment optionsMenu;
@@ -28,8 +36,12 @@ public class PauseFragment extends Table {
         pauseStage.addActor(background);
         TextButton optionsButton = new TextButton("Options", Vars.gameSkin);
         stageTable.add(optionsButton);
+        stageTable.row();
         TextButton closeButton = new TextButton("Back", Vars.gameSkin);
         stageTable.add(closeButton);
+        stageTable.row();
+        TextButton exitButton = new TextButton("Exit to Main Menu", Vars.gameSkin);
+        stageTable.add(exitButton);
 
         optionsButton.addListener(new ChangeListener() {
             @Override
@@ -45,6 +57,15 @@ public class PauseFragment extends Table {
                 Sounds.click.play(1f);
                 setVisible(false);
                 Gdx.input.setInputProcessor(World.inputMultiplexer);
+            }
+        });
+        exitButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent changeEvent, Actor actor) {
+                Sounds.click.play(1f);
+                setVisible(false);
+                Gdx.input.setInputProcessor(mainMenuStage);
+                MainMenu.game.setScreen(new MainMenu(MainMenu.game));
             }
         });
 

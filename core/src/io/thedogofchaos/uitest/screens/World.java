@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.thedogofchaos.uitest.GameInputProcessor;
+import io.thedogofchaos.uitest.Sounds;
 import io.thedogofchaos.uitest.UiTest;
 import io.thedogofchaos.uitest.Vars;
 import io.thedogofchaos.uitest.fragments.*;
@@ -27,7 +28,7 @@ public class World extends ScreenAdapter {
     private final InputProcessor gameInputProcessor = new GameInputProcessor();
     public static InputMultiplexer inputMultiplexer = new InputMultiplexer();
 
-    public World(UiTest game) {
+    public World() {
         worldStage = new Stage(new ScreenViewport());
         Vars.currentStage = "worldStage";
         Table temp = new Table();
@@ -43,12 +44,14 @@ public class World extends ScreenAdapter {
         Image placeholderImage = new Image(placeholderImageDrawable);
         temp.add(placeholderImage);
 
-        hudStage.addListener(new ChangeListener() {
+        HudFragment.pauseButton.addListener(new ChangeListener() {
             @Override
-            public void changed(ChangeEvent event, Actor actor) {
+            public void changed(ChangeEvent changeEvent, Actor actor) {
+                Sounds.click.play(1f);
                 pauseMenu.setVisible(true);
             }
         });
+
         worldStage.addActor(temp);
         worldStage.addActor(pauseMenu); // Fun fact: The oversight of not including this very line in my code absolutely BROKE me mentally for about 3 to 4 days. So yeah, don't forget about the stupidly simple stuff like this.
     }
@@ -59,7 +62,6 @@ public class World extends ScreenAdapter {
         inputMultiplexer.addProcessor(gameInputProcessor);
         Gdx.input.setInputProcessor(inputMultiplexer);
         hud.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-
     }
 
     @Override
@@ -68,18 +70,15 @@ public class World extends ScreenAdapter {
         update(delta); // Update logic
         worldStage.act(delta); // Update the stage
         worldStage.draw(); // Draw the stage
+        hud.act(delta);
+        hud.draw();
         if (optionsMenu.isVisible()) {
             optionsMenu.act(delta);
             optionsMenu.draw();
         }
         if (pauseMenu.isVisible()) {
-            hud.act(delta);
-            hud.draw();
             pauseMenu.act(delta);
             pauseMenu.draw();
-        } else if (!pauseMenu.isVisible()) {
-            hud.act(delta);
-            hud.draw();
         }
     }
 
@@ -100,5 +99,7 @@ public class World extends ScreenAdapter {
     public void dispose() {
         worldStage.dispose(); // Dispose of the stage
         hud.dispose(); // Dispose of HUD resources
+        pauseMenu.dispose();
+        optionsMenu.dispose();
     }
 }

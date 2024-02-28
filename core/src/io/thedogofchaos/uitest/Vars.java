@@ -6,6 +6,5 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 public class Vars {
     public static Skin gameSkin = new Skin(Gdx.files.internal("metalui/metal-ui.json"));
-    public static String prevStage;
     public static String currentStage;
 }
