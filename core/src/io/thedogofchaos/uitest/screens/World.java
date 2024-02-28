@@ -50,7 +50,7 @@ public class World extends ScreenAdapter {
             }
         });
         worldStage.addActor(temp);
-        worldStage.addActor(pauseMenu);
+        worldStage.addActor(pauseMenu); // Fun fact: The oversight of not including this very line in my code absolutely BROKE me mentally for about 3 to 4 days. So yeah, don't forget about the stupidly simple stuff like this.
     }
 
     @Override
