@@ -14,12 +14,12 @@ public class GameInputProcessor implements InputProcessor {
         if (keycode == Input.Keys.ESCAPE) {
             System.out.println(Vars.currentStage);
             if (Vars.currentStage == "worldStage") {
-                pauseMenu.showPauseMenu(true);
+                pauseMenu.setVisible(true);
                 System.out.println("pause menu should be visible now");
                 Vars.currentStage = "pauseStage";
                 return true;
             } else if (Vars.currentStage == "pauseStage") {
-                pauseMenu.showPauseMenu(false);
+                pauseMenu.setVisible(false);
                 System.out.println("pause menu should NOT be visible now");
                 Vars.currentStage = "worldStage";
                 return true;

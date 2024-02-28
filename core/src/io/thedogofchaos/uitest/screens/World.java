@@ -35,9 +35,9 @@ public class World extends ScreenAdapter {
         hud = new HudFragment();
         hudStage = HudFragment.hudStage;
         optionsMenu = new OptionsFragment(worldStage);
-        optionsMenu.showOptionsMenu(false);
+        optionsMenu.setVisible(false);
         pauseMenu = new PauseFragment();
-        pauseMenu.showPauseMenu(false);
+        pauseMenu.setVisible(false);
 
         TextureRegionDrawable placeholderImageDrawable = new TextureRegionDrawable(new Texture("badlogic.jpg"));
         Image placeholderImage = new Image(placeholderImageDrawable);
@@ -46,7 +46,7 @@ public class World extends ScreenAdapter {
         hudStage.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                pauseMenu.showPauseMenu(true);
+                pauseMenu.setVisible(true);
             }
         });
         worldStage.addActor(temp);

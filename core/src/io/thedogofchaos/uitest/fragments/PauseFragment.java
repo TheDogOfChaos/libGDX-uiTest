@@ -25,7 +25,7 @@ public class PauseFragment extends Table {
         stageTable.setFillParent(true);
         stageTable.pad(25).setDebug(false);
 
-
+        pauseStage.addActor(background);
         TextButton optionsButton = new TextButton("Options", Vars.gameSkin);
         stageTable.add(optionsButton);
         TextButton closeButton = new TextButton("Back", Vars.gameSkin);
@@ -35,7 +35,7 @@ public class PauseFragment extends Table {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 Sounds.click.play(1f);
-                optionsMenu.showOptionsMenu(true);
+                optionsMenu.setVisible(true);
                 Gdx.input.setInputProcessor(OptionsFragment.optionsStage);
             }
         });
@@ -43,7 +43,7 @@ public class PauseFragment extends Table {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 Sounds.click.play(1f);
-                showPauseMenu(false);
+                setVisible(false);
                 Gdx.input.setInputProcessor(World.inputMultiplexer);
             }
         });
@@ -68,16 +68,6 @@ public class PauseFragment extends Table {
         return background;
     }
 
-
-    public void showPauseMenu(boolean show) {
-        if (show) {
-            System.out.println(getStage());
-             getStage().addActor(background);
-        } else {
-            background.remove();
-        }
-        setVisible(show);
-    }
     public void update(float delta) {
 
     }

@@ -25,6 +25,8 @@ public class OptionsFragment extends Table {
         stageTable.setFillParent(true);
         stageTable.pad(25).setDebug(true);
 
+        optionsStage.addActor(background);
+
         Table optionsTable = new Table();
         stageTable.add(optionsTable).expand().top().left();
 
@@ -44,7 +46,7 @@ public class OptionsFragment extends Table {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 Sounds.click.play(1f);
-                showOptionsMenu(false);
+                setVisible(false);
                 Gdx.input.setInputProcessor(prevStage);
             }
         });
@@ -69,14 +71,6 @@ public class OptionsFragment extends Table {
         return background;
     }
 
-    public void showOptionsMenu(boolean show) {
-        if (show) {
-            getStage().addActor(background);
-        } else {
-            background.remove();
-        }
-        setVisible(show);
-    }
     public void update(float delta) {
 
     }

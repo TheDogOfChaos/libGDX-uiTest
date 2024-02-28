@@ -22,7 +22,7 @@ public class HudFragment extends Table{
 		stageTable.pad(25).setDebug(false);
 
 		pauseMenu = new PauseFragment();
-		pauseMenu.showPauseMenu(false);
+		pauseMenu.setVisible(false);
 		TextButton pauseButton = new TextButton("⏸", Vars.gameSkin);
 		stageTable.add(pauseButton).expand().top().left();
 		Table essentialStatsTable = new Table();

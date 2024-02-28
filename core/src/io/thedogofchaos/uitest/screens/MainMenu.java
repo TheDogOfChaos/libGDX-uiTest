@@ -33,7 +33,7 @@ public class MainMenu implements Screen {
         mainMenu.pad(25).setDebug(false);
 
         optionsMenu = new OptionsFragment(mainMenuStage);
-        optionsMenu.showOptionsMenu(false);
+        optionsMenu.setVisible(false);
 
         // this adds the title image
         TextureRegionDrawable drawable = new TextureRegionDrawable(new Texture(Gdx.files.internal("UNTITLED-FACTORY-GAME.png")));
@@ -63,7 +63,7 @@ public class MainMenu implements Screen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 Sounds.click.play(1f);
-                optionsMenu.showOptionsMenu(true);
+                optionsMenu.setVisible(true);
             }
         });
         exitButton.addListener(new ChangeListener() { // this works fine
