@@ -24,7 +24,7 @@ public class HudFragment extends Table{
 
 		pauseMenu = new PauseFragment();
 		pauseMenu.setVisible(false);
-		pauseButton = new TextButton("⏸", Vars.gameSkin);
+		pauseButton = new TextButton("Pause", Vars.gameSkin);
 		stageTable.add(pauseButton).expand().top().left();
 		Table essentialStatsTable = new Table();
 		stageTable.add(essentialStatsTable).expand().bottom().left();
