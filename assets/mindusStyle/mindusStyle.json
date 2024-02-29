@@ -1,0 +1,236 @@
+{
+"BitmapFont": {
+	"Audiowide-Regular": {
+		"file": "Audiowide-Regular.fnt",
+		"scaledSize": -1,
+		"markupEnabled": false,
+		"flip": false
+	}
+},
+"Color": {
+	"black": {
+		"hex": "000000ff"
+	},
+	"grey": {
+		"hex": "808080ff"
+	},
+	"halfwayThereGrey": {
+		"hex": "80808080"
+	},
+	"RGBgreen": {
+		"hex": "00ff00ff"
+	},
+	"RGBgreenSemiTransparent": {
+		"hex": "00ff0080"
+	},
+	"RGBred": {
+		"hex": "ff0000ff"
+	},
+	"white": {
+		"hex": "ffffffff"
+	}
+},
+"TintedDrawable": {
+	"pixel": {
+		"name": "white-pixel",
+		"color": "RGBgreen",
+		"minWidth": 16,
+		"minHeight": 16
+	},
+	"cursor": {
+		"name": "white-pixel",
+		"color": "RGBgreenSemiTransparent",
+		"minWidth": 1,
+		"minHeight": 16
+	},
+	"greyBGthing": {
+		"name": "white-pixel",
+		"color": "halfwayThereGrey",
+		"minWidth": 16,
+		"minHeight": 16
+	}
+},
+"ButtonStyle": {
+	"default": {
+		"up": "btn",
+		"down": "btnPressed",
+		"over": "btnHover",
+		"focused": "btnSelected",
+		"disabled": "btnDisabled"
+	}
+},
+"CheckBoxStyle": {
+	"default": {
+		"checkboxOn": "chkboxFocused",
+		"checkboxOff": "chkbox",
+		"checkboxOnOver": "chkbox",
+		"checkboxOver": "chkboxFocused",
+		"checkboxOnDisabled": "chkboxDisabled",
+		"checkboxOffDisabled": "chkboxDisabled",
+		"font": "Audiowide-Regular",
+		"up": "greyBGthing",
+		"over": "cursor",
+		"focused": "btnSelected",
+		"disabled": "btnDisabled"
+	}
+},
+"ImageButtonStyle": {
+	"default": {
+		"up": "btn",
+		"down": "btnPressed",
+		"over": "btnHover",
+		"focused": "btnSelected",
+		"disabled": "btnDisabled"
+	}
+},
+"ImageTextButtonStyle": {
+	"default": {
+		"font": "Audiowide-Regular",
+		"up": "btn",
+		"down": "btnPressed",
+		"over": "btnHover",
+		"focused": "btnSelected",
+		"disabled": "btnDisabled"
+	}
+},
+"LabelStyle": {
+	"default": {
+		"font": "Audiowide-Regular",
+		"fontColor": "white",
+		"background": "btn"
+	}
+},
+"ListStyle": {
+	"default": {
+		"font": "Audiowide-Regular",
+		"fontColorSelected": "white",
+		"fontColorUnselected": "black",
+		"selection": "btnSelected",
+		"down": "btnPressed",
+		"over": "btnHover",
+		"background": "btn"
+	}
+},
+"ProgressBarStyle": {
+	"default-horizontal": {
+		"background": "chkbox",
+		"disabledBackground": "chkboxDisabled",
+		"knobBefore": "8x8greenpixel",
+		"knobAfter": "8x8redpixel"
+	},
+	"default-vertical": {
+		"background": "chkbox",
+		"disabledBackground": "chkboxDisabled",
+		"knobBefore": "8x8greenpixel",
+		"knobAfter": "8x8redpixel"
+	}
+},
+"ScrollPaneStyle": {
+	"default": {
+		"background": "chkbox",
+		"hScroll": "btnPressed",
+		"hScrollKnob": "btnDisabled",
+		"vScroll": "btnPressed",
+		"vScrollKnob": "btnDisabled"
+	}
+},
+"SelectBoxStyle": {
+	"default": {
+		"font": "Audiowide-Regular",
+		"fontColor": "black",
+		"overFontColor": "white",
+		"disabledFontColor": "grey",
+		"background": "btn",
+		"scrollStyle": "default",
+		"listStyle": "default",
+		"backgroundOver": "btnHover",
+		"backgroundOpen": "btnSelected",
+		"backgroundDisabled": "btnDisabled"
+	}
+},
+"SliderStyle": {
+	"default-horizontal": {
+		"knobOver": "btnHover",
+		"background": "chkbox",
+		"disabledBackground": "chkboxDisabled",
+		"knob": "btn",
+		"disabledKnob": "btnDisabled",
+		"knobBefore": "8x8greenpixel",
+		"disabledKnobBefore": "8x8redpixel"
+	},
+	"default-vertical": {
+		"knobOver": "btnHover",
+		"background": "chkbox",
+		"disabledBackground": "chkboxDisabled",
+		"knob": "btn",
+		"disabledKnob": "btnDisabled",
+		"knobBefore": "8x8greenpixel",
+		"disabledKnobBefore": "8x8redpixel"
+	}
+},
+"SplitPaneStyle": {
+	"default-horizontal": {
+		"handle": "btn"
+	},
+	"default-vertical": {
+		"handle": "btn"
+	}
+},
+"TextButtonStyle": {
+	"default": {
+		"font": "Audiowide-Regular",
+		"fontColor": "white",
+		"downFontColor": "black",
+		"disabledFontColor": "black",
+		"up": "btn",
+		"down": "btnPressed",
+		"over": "btnHover",
+		"focused": "btnSelected",
+		"disabled": "btnDisabled"
+	}
+},
+"TextFieldStyle": {
+	"default": {
+		"font": "Audiowide-Regular",
+		"fontColor": "white",
+		"disabledFontColor": "black",
+		"background": "btn",
+		"focusedBackground": "btnSelected",
+		"disabledBackground": "btnDisabled",
+		"cursor": "cursor",
+		"selection": "btnSelected",
+		"messageFont": "Audiowide-Regular",
+		"messageFontColor": "white"
+	}
+},
+"TextTooltipStyle": {
+	"default": {
+		"label": "default",
+		"background": "btn"
+	}
+},
+"TouchpadStyle": {
+	"default": {
+		"background": "btn",
+		"knob": "btnHover"
+	}
+},
+"TreeStyle": {
+	"default": {
+		"plus": "btn",
+		"minus": "btnPressed",
+		"plusOver": "btnHover",
+		"minusOver": "btnHover",
+		"over": "btnHover",
+		"selection": "btnSelected",
+		"background": "chkbox"
+	}
+},
+"WindowStyle": {
+	"default": {
+		"background": "chkbox",
+		"titleFont": "Audiowide-Regular",
+		"titleFontColor": "white"
+	}
+}
+}

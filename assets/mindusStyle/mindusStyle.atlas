@@ -1,0 +1,111 @@
+
+mindusStyle.png
+size: 512, 512
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+white-pixel
+  rotate: false
+  xy: 508, 506
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+Audiowide-Regular
+  rotate: false
+  xy: 1, 434
+  size: 505, 73
+  orig: 505, 73
+  offset: 0, 0
+  index: -1
+8x8greenpixel
+  rotate: false
+  xy: 1, 296
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+8x8redpixel
+  rotate: false
+  xy: 35, 338
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+btn
+  rotate: false
+  xy: 35, 374
+  size: 24, 24
+  split: 4, 4, 4, 4
+  pad: 8, 8, 8, 8
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+btnDisabled
+  rotate: false
+  xy: 95, 408
+  size: 24, 24
+  split: 4, 4, 4, 4
+  pad: 8, 8, 8, 8
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+btnHover
+  rotate: false
+  xy: 69, 408
+  size: 24, 24
+  split: 4, 4, 4, 4
+  pad: 8, 8, 8, 8
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+btnPressed
+  rotate: false
+  xy: 35, 348
+  size: 24, 24
+  split: 4, 4, 4, 4
+  pad: 8, 8, 8, 8
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+btnSelected
+  rotate: false
+  xy: 1, 306
+  size: 24, 24
+  split: 4, 4, 4, 4
+  pad: 8, 8, 8, 8
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+chkbox
+  rotate: false
+  xy: 1, 400
+  size: 32, 32
+  split: 12, 12, 12, 12
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+chkboxDisabled
+  rotate: false
+  xy: 1, 332
+  size: 32, 32
+  split: 12, 12, 12, 12
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+chkboxFocused
+  rotate: false
+  xy: 35, 400
+  size: 32, 32
+  split: 12, 12, 12, 12
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+chkboxHover
+  rotate: false
+  xy: 1, 366
+  size: 32, 32
+  split: 12, 12, 12, 12
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
