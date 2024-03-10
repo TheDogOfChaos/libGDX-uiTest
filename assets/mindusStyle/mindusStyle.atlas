@@ -11,6 +11,20 @@ white-pixel
   orig: 1, 1
   offset: 0, 0
   index: -1
+16x16greenpixel
+  rotate: false
+  xy: 129, 416
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+16x16redpixel
+  rotate: false
+  xy: 1, 254
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
 Audiowide-Regular
   rotate: false
   xy: 1, 434
@@ -18,62 +32,43 @@ Audiowide-Regular
   orig: 505, 73
   offset: 0, 0
   index: -1
-8x8greenpixel
-  rotate: false
-  xy: 1, 296
-  size: 8, 8
-  orig: 8, 8
-  offset: 0, 0
-  index: -1
-8x8redpixel
-  rotate: false
-  xy: 35, 338
-  size: 8, 8
-  orig: 8, 8
-  offset: 0, 0
-  index: -1
 btn
   rotate: false
-  xy: 35, 374
+  xy: 69, 374
   size: 24, 24
-  split: 4, 4, 4, 4
-  pad: 8, 8, 8, 8
+  split: 8, 8, 8, 8
   orig: 24, 24
   offset: 0, 0
   index: -1
 btnDisabled
   rotate: false
-  xy: 95, 408
+  xy: 1, 272
   size: 24, 24
-  split: 4, 4, 4, 4
-  pad: 8, 8, 8, 8
+  split: 8, 8, 8, 8
   orig: 24, 24
   offset: 0, 0
   index: -1
 btnHover
   rotate: false
-  xy: 69, 408
+  xy: 103, 408
   size: 24, 24
-  split: 4, 4, 4, 4
-  pad: 8, 8, 8, 8
+  split: 8, 8, 8, 8
   orig: 24, 24
   offset: 0, 0
   index: -1
 btnPressed
   rotate: false
-  xy: 35, 348
+  xy: 35, 306
   size: 24, 24
-  split: 4, 4, 4, 4
-  pad: 8, 8, 8, 8
+  split: 8, 8, 8, 8
   orig: 24, 24
   offset: 0, 0
   index: -1
 btnSelected
   rotate: false
-  xy: 1, 306
+  xy: 69, 348
   size: 24, 24
-  split: 4, 4, 4, 4
-  pad: 8, 8, 8, 8
+  split: 8, 8, 8, 8
   orig: 24, 24
   offset: 0, 0
   index: -1
@@ -81,7 +76,15 @@ chkbox
   rotate: false
   xy: 1, 400
   size: 32, 32
-  split: 12, 12, 12, 12
+  split: 8, 8, 8, 8
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+chkboxChecked
+  rotate: false
+  xy: 35, 366
+  size: 32, 32
+  split: 14, 14, 14, 14
   orig: 32, 32
   offset: 0, 0
   index: -1
@@ -89,7 +92,15 @@ chkboxDisabled
   rotate: false
   xy: 1, 332
   size: 32, 32
-  split: 12, 12, 12, 12
+  split: 8, 8, 8, 8
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+chkboxDisabledChecked
+  rotate: false
+  xy: 35, 332
+  size: 32, 32
+  split: 14, 14, 14, 14
   orig: 32, 32
   offset: 0, 0
   index: -1
@@ -97,7 +108,15 @@ chkboxFocused
   rotate: false
   xy: 35, 400
   size: 32, 32
-  split: 12, 12, 12, 12
+  split: 8, 8, 8, 8
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+chkboxFocusedChecked
+  rotate: false
+  xy: 1, 298
+  size: 32, 32
+  split: 14, 14, 14, 14
   orig: 32, 32
   offset: 0, 0
   index: -1
@@ -105,7 +124,15 @@ chkboxHover
   rotate: false
   xy: 1, 366
   size: 32, 32
-  split: 12, 12, 12, 12
+  split: 8, 8, 8, 8
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+chkboxHoverChecked
+  rotate: false
+  xy: 69, 400
+  size: 32, 32
+  split: 14, 14, 14, 14
   orig: 32, 32
   offset: 0, 0
   index: -1

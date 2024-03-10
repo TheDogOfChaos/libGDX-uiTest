@@ -42,9 +42,9 @@ public class World extends ScreenAdapter {
         pauseMenu = new PauseFragment();
         pauseMenu.setVisible(false);
 
-        TextureRegionDrawable placeholderImageDrawable = new TextureRegionDrawable(new Texture("badlogic.jpg"));
+        TextureRegionDrawable placeholderImageDrawable = new TextureRegionDrawable(new Texture("noU.jpeg"));
         Image placeholderImage = new Image(placeholderImageDrawable);
-        temp.add(placeholderImage);
+        temp.add(placeholderImage).width(512).height(128);
 
         HudFragment.pauseButton.addListener(new ChangeListener() {
             @Override

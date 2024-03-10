@@ -28,6 +28,9 @@
 	},
 	"white": {
 		"hex": "ffffffff"
+	},
+	"goldenYellow": {
+		"hex": "ffc000ff"
 	}
 },
 "TintedDrawable": {
@@ -61,17 +64,19 @@
 },
 "CheckBoxStyle": {
 	"default": {
-		"checkboxOn": "chkboxFocused",
+		"checkboxOn": "chkboxChecked",
 		"checkboxOff": "chkbox",
-		"checkboxOnOver": "chkbox",
-		"checkboxOver": "chkboxFocused",
-		"checkboxOnDisabled": "chkboxDisabled",
+		"checkboxOnOver": "chkboxHoverChecked",
+		"checkboxOver": "chkboxHover",
+		"checkboxOnDisabled": "chkboxDisabledChecked",
 		"checkboxOffDisabled": "chkboxDisabled",
 		"font": "Audiowide-Regular",
-		"up": "greyBGthing",
-		"over": "cursor",
-		"focused": "btnSelected",
-		"disabled": "btnDisabled"
+		"fontColor": "black",
+		"up": "chkbox",
+		"over": "chkboxHover",
+		"focused": "chkboxFocused",
+		"checked": "chkbox",
+		"checkedOver": "chkboxHover"
 	}
 },
 "ImageButtonStyle": {
@@ -86,6 +91,8 @@
 "ImageTextButtonStyle": {
 	"default": {
 		"font": "Audiowide-Regular",
+		"fontColor": "black",
+		"disabledFontColor": "grey",
 		"up": "btn",
 		"down": "btnPressed",
 		"over": "btnHover",
@@ -96,14 +103,14 @@
 "LabelStyle": {
 	"default": {
 		"font": "Audiowide-Regular",
-		"fontColor": "white",
+		"fontColor": "black",
 		"background": "btn"
 	}
 },
 "ListStyle": {
 	"default": {
 		"font": "Audiowide-Regular",
-		"fontColorSelected": "white",
+		"fontColorSelected": "RGBgreen",
 		"fontColorUnselected": "black",
 		"selection": "btnSelected",
 		"down": "btnPressed",
@@ -115,57 +122,59 @@
 	"default-horizontal": {
 		"background": "chkbox",
 		"disabledBackground": "chkboxDisabled",
-		"knobBefore": "8x8greenpixel",
-		"knobAfter": "8x8redpixel"
+		"knobBefore": "16x16greenpixel",
+		"knobAfter": "16x16redpixel"
 	},
 	"default-vertical": {
 		"background": "chkbox",
 		"disabledBackground": "chkboxDisabled",
-		"knobBefore": "8x8greenpixel",
-		"knobAfter": "8x8redpixel"
+		"knobBefore": "16x16greenpixel",
+		"knobAfter": "16x16redpixel"
 	}
 },
 "ScrollPaneStyle": {
 	"default": {
 		"background": "chkbox",
-		"hScroll": "btnPressed",
-		"hScrollKnob": "btnDisabled",
-		"vScroll": "btnPressed",
-		"vScrollKnob": "btnDisabled"
+		"hScroll": "btn",
+		"hScrollKnob": "btnSelected",
+		"vScroll": "btn",
+		"vScrollKnob": "btnSelected"
 	}
 },
 "SelectBoxStyle": {
 	"default": {
 		"font": "Audiowide-Regular",
 		"fontColor": "black",
-		"overFontColor": "white",
+		"overFontColor": "goldenYellow",
 		"disabledFontColor": "grey",
 		"background": "btn",
 		"scrollStyle": "default",
 		"listStyle": "default",
 		"backgroundOver": "btnHover",
-		"backgroundOpen": "btnSelected",
+		"backgroundOpen": "btn",
 		"backgroundDisabled": "btnDisabled"
 	}
 },
 "SliderStyle": {
 	"default-horizontal": {
+		"backgroundOver": "chkboxHover",
+		"backgroundDown": "chkboxFocused",
 		"knobOver": "btnHover",
+		"knobDown": "btnSelected",
 		"background": "chkbox",
 		"disabledBackground": "chkboxDisabled",
 		"knob": "btn",
-		"disabledKnob": "btnDisabled",
-		"knobBefore": "8x8greenpixel",
-		"disabledKnobBefore": "8x8redpixel"
+		"disabledKnob": "btnDisabled"
 	},
 	"default-vertical": {
+		"backgroundOver": "chkboxHover",
+		"backgroundDown": "chkboxFocused",
 		"knobOver": "btnHover",
+		"knobDown": "btnSelected",
 		"background": "chkbox",
 		"disabledBackground": "chkboxDisabled",
 		"knob": "btn",
-		"disabledKnob": "btnDisabled",
-		"knobBefore": "8x8greenpixel",
-		"disabledKnobBefore": "8x8redpixel"
+		"disabledKnob": "btnDisabled"
 	}
 },
 "SplitPaneStyle": {
@@ -179,9 +188,11 @@
 "TextButtonStyle": {
 	"default": {
 		"font": "Audiowide-Regular",
-		"fontColor": "white",
-		"downFontColor": "black",
-		"disabledFontColor": "black",
+		"fontColor": "black",
+		"downFontColor": "grey",
+		"overFontColor": "goldenYellow",
+		"focusedFontColor": "RGBgreen",
+		"disabledFontColor": "RGBred",
 		"up": "btn",
 		"down": "btnPressed",
 		"over": "btnHover",
@@ -192,13 +203,13 @@
 "TextFieldStyle": {
 	"default": {
 		"font": "Audiowide-Regular",
-		"fontColor": "white",
-		"disabledFontColor": "black",
+		"fontColor": "black",
+		"disabledFontColor": "RGBred",
 		"background": "btn",
 		"focusedBackground": "btnSelected",
 		"disabledBackground": "btnDisabled",
 		"cursor": "cursor",
-		"selection": "btnSelected",
+		"selection": "cursor",
 		"messageFont": "Audiowide-Regular",
 		"messageFontColor": "white"
 	}
@@ -212,25 +223,23 @@
 "TouchpadStyle": {
 	"default": {
 		"background": "btn",
-		"knob": "btnHover"
+		"knob": "btn"
 	}
 },
 "TreeStyle": {
 	"default": {
 		"plus": "btn",
-		"minus": "btnPressed",
+		"minus": "btnSelected",
 		"plusOver": "btnHover",
-		"minusOver": "btnHover",
-		"over": "btnHover",
-		"selection": "btnSelected",
-		"background": "chkbox"
+		"minusOver": "btnHover"
 	}
 },
 "WindowStyle": {
 	"default": {
-		"background": "chkbox",
+		"background": "btn",
 		"titleFont": "Audiowide-Regular",
-		"titleFontColor": "white"
+		"titleFontColor": "white",
+		"stageBackground": "btn"
 	}
 }
 }
