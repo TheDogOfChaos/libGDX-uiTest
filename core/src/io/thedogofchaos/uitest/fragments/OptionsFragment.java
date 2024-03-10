@@ -23,7 +23,7 @@ public class OptionsFragment extends Table {
         optionsStage = new Stage();
         Table stageTable = new Table();
         stageTable.setFillParent(true);
-        stageTable.pad(25).setDebug(true);
+        stageTable.pad(25).setDebug(false);
 
         optionsStage.addActor(background);
 
